@@ -22,8 +22,8 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'urlBox1.Text = "https://www.naturaselection.com/es/tienda/ropa/coleccion-organica"
-        'urlBox1.Text = "https://www.nike.com/es/ca/home"
+        'urlBox1.Text = "https://es.louisvuitton.com/esp-es/productos/bolso-neverfull-mm-g67-nvprod2440072v"
+        urlBox1.Text = "https://es.louisvuitton.com/esp-es/productos/bolso-nano-speedy-monogram-010575"
         'urlBox1.Text = "https://es.louisvuitton.com/esp-es/hombre/carteras-y-pequena-marroquineria/todas-las-carteras-y-pequena-marroquineria/_/N-5ts7t2"
 
         LastSniffed = 0
@@ -31,6 +31,8 @@ Public Class Form1
         Button2.Text = "Start"
         CheckBox1.Checked = False
         StopSniffing()
+
+        WebBrowser1.Navigate(urlBox1.Text)
 
     End Sub
     'Use in case you want to keep the same connexion for every interval, not working tho
@@ -67,10 +69,49 @@ Public Class Form1
 
     End Sub
 
+    Private Sub CheckIfButtonIsActive()
+
+
+        'Dim scriptElements As HtmlElementCollection = WebBrowser1.Document.GetElementsByTagName("Script")
+
+        'For Each scriptS As HtmlElement In scriptElements
+
+        '    Dim nom As String = scriptS.Name
+        '    Dim nomTag As String = scriptS.TagName
+
+        '    scriptS.
+
+        'Next
+
+        'Dim elements As HtmlElementCollection = WebBrowser1.Document.All
+        'Dim price As String = WebBrowser1.Document.InvokeScript("priceValue")
+        'Dim PriceAux As Object = CallJS("priceDiv")
+
+        'For Each webElement As HtmlElement In elements
+
+
+        '    If webElement.GetAttribute("id") = "addToCartSubmit" Then
+
+        '        Dim s As String = webElement.GetAttribute("hidden")
+        '        webElement.InvokeMember("click")
+
+        '    End If
+
+        'Next
+
+    End Sub
+
+    Private Function CallJS(ByVal script As String) As Object
+
+        Return WebBrowser1.Document.InvokeScript("eval", New String() {script})
+
+    End Function
+
     Private Sub Sniff()
         AnalyzeHTML()
     End Sub
 
+    'Not used
     Private Sub GetHTML()
         Dim request As WebRequest = WebRequest.Create(urlBox1.Text)
         request.UseDefaultCredentials = True
@@ -115,29 +156,29 @@ Public Class Form1
         End Try
 
 
-        Dim keyWords() As String = wordsToFindtxt.Text.Split(New String() {Environment.NewLine},
-                                       StringSplitOptions.None)
+        'Dim keyWords() As String = wordsToFindtxt.Text.Split(New String() {Environment.NewLine},
+        '                               StringSplitOptions.None)
         Dim resultText As String = ""
 
         Dim haTrobat As Boolean = False
         objectsFound = ""
 
-        For Each keyWord In keyWords
-            If keyWord <> "" Then
-                If sourceString.ToLower.Contains(keyWord.ToLower) Then
-                    resultText += "Trobat: " + keyWord + vbCrLf
+        'For Each keyWord In keyWords
+        '    If keyWord <> "" Then
+        '        If sourceString.ToLower.Contains(keyWord.ToLower) Then
+        '            resultText += "Trobat: " + keyWord + vbCrLf
 
-                    objectsFound += keyWord + ","
-                    haTrobat = True
-                Else
-                    resultText += "No trobat: " + keyWord + vbCrLf
-                End If
-            End If
-        Next
+        '            objectsFound += keyWord + ","
+        '            haTrobat = True
+        '        Else
+        '            resultText += "No trobat: " + keyWord + vbCrLf
+        '        End If
+        '    End If
+        'Next
 
 
         resultText += "Sniffed at: " + Now
-        Label3.Text = resultText
+        'Label3.Text = resultText
 
         If (haTrobat And CheckBox1.Checked) Then
             SendEmail()
@@ -173,6 +214,10 @@ Public Class Form1
     End Function
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        'Test
+        CheckIfButtonIsActive()
+
         If (sniffing) Then
             StopSniffing()
 
@@ -197,7 +242,7 @@ Public Class Form1
         timeSniffing = 0
         LastSniffed = -(sniffInterval - 1)
 
-        wordsToFindtxt.ReadOnly = True
+        'wordsToFindtxt.ReadOnly = True
         TextBox1.ReadOnly = True
         urlBox1.ReadOnly = True
 
@@ -213,7 +258,7 @@ Public Class Form1
         sniffing = False
         Button2.Text = "Start"
 
-        wordsToFindtxt.ReadOnly = False
+        'wordsToFindtxt.ReadOnly = False
         urlBox1.ReadOnly = False
         TextBox1.ReadOnly = False
 

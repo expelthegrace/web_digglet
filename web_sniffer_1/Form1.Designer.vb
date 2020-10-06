@@ -29,16 +29,11 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.runningTimelbl = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.wordsToFindtxt = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
@@ -50,7 +45,7 @@ Partial Class Form1
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Panel1.SuspendLayout()
+        Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
         Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -96,23 +91,6 @@ Partial Class Form1
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
         '
-        'wordsToFindtxt
-        '
-        Me.wordsToFindtxt.Location = New System.Drawing.Point(36, 121)
-        Me.wordsToFindtxt.Multiline = True
-        Me.wordsToFindtxt.Name = "wordsToFindtxt"
-        Me.wordsToFindtxt.Size = New System.Drawing.Size(332, 193)
-        Me.wordsToFindtxt.TabIndex = 5
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 4)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(16, 13)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "..."
-        '
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -130,15 +108,6 @@ Partial Class Form1
         Me.TextBox1.Size = New System.Drawing.Size(82, 20)
         Me.TextBox1.TabIndex = 8
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Panel1
-        '
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Location = New System.Drawing.Point(392, 121)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(351, 193)
-        Me.Panel1.TabIndex = 9
         '
         'Label4
         '
@@ -166,24 +135,6 @@ Partial Class Form1
         Me.Button3.TabIndex = 12
         Me.Button3.Text = "Go to web"
         Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(33, 101)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(156, 13)
-        Me.Label2.TabIndex = 13
-        Me.Label2.Text = "Key Words (separated by enter)"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(389, 101)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(37, 13)
-        Me.Label7.TabIndex = 14
-        Me.Label7.Text = "Result"
         '
         'TextBox2
         '
@@ -288,21 +239,26 @@ Partial Class Form1
         Me.TextBox4.Size = New System.Drawing.Size(150, 20)
         Me.TextBox4.TabIndex = 20
         '
+        'WebBrowser1
+        '
+        Me.WebBrowser1.Location = New System.Drawing.Point(36, 79)
+        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.WebBrowser1.Name = "WebBrowser1"
+        Me.WebBrowser1.Size = New System.Drawing.Size(474, 230)
+        Me.WebBrowser1.TabIndex = 20
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(794, 508)
+        Me.Controls.Add(Me.WebBrowser1)
         Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.wordsToFindtxt)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.runningTimelbl)
         Me.Controls.Add(Me.Label1)
@@ -310,8 +266,6 @@ Partial Class Form1
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Text = "Web Sniffer"
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.ResumeLayout(False)
@@ -324,16 +278,11 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents runningTimelbl As TextBox
     Friend WithEvents Button1 As Button
-    Friend WithEvents wordsToFindtxt As TextBox
-    Friend WithEvents Label3 As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Panel1 As Panel
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Button3 As Button
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label7 As Label
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents TextBox3 As TextBox
@@ -345,4 +294,5 @@ Partial Class Form1
     Friend WithEvents Button4 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents WebBrowser1 As WebBrowser
 End Class
